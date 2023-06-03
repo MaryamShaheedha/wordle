@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="wordlist.js"></script>
     <script defer src="scripts.js"></script>
     <title>Wordle</title>
 </head>
@@ -13,7 +15,100 @@
         <h1>Wordle</h1>
     </header>
     <section>
-
+        <div class="error_message_container">
+            <div class="error_icon">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                    <style>svg{fill:#1968f0}</style>
+                    <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/>
+                </svg>
+            </div>
+            <div class="error_message">
+                <h2 class="error_heading">Some Error</h2>
+                <span class="error_details">This is the details part</span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row_input active_row" id="row_1">
+                <input class="letter" type="text">
+                <input class="letter" type="text">
+                <input class="letter" type="text">
+                <input class="letter" type="text">
+                <input class="letter" type="text">
+            </div>
+            <div class="row_input" id="row_2">
+                <input class="letter" type="text">
+                <input class="letter" type="text">
+                <input class="letter" type="text">
+                <input class="letter" type="text">
+                <input class="letter" type="text">
+            </div>
+            <div class="row_input" id="row_3">
+                <input class="letter" type="text">
+                <input class="letter" type="text">
+                <input class="letter" type="text">
+                <input class="letter" type="text">
+                <input class="letter" type="text">
+            </div>
+            <div class="row_input" id="row_4">
+                <input class="letter" type="text">
+                <input class="letter" type="text">
+                <input class="letter" type="text">
+                <input class="letter" type="text">
+                <input class="letter" type="text">
+            </div>
+            <div class="row_input" id="row_5">
+                <input class="letter" type="text">
+                <input class="letter" type="text">
+                <input class="letter" type="text">
+                <input class="letter" type="text">
+                <input class="letter" type="text">
+            </div>
+        </div>
+        <div class="keyboard">
+            <div class="row" id="row_1">
+                <button class="key input">Q</button>
+                <button class="key input">W</button>
+                <button class="key input">E</button>
+                <button class="key input">R</button>
+                <button class="key input">T</button>
+                <button class="key input">Y</button>
+                <button class="key input">U</button>
+                <button class="key input">I</button>
+                <button class="key input">O</button>
+                <button class="key input">P</button>
+            </div>
+            <div class="row" id="row_2">
+                <button class="key input">A</button>
+                <button class="key input">S</button>
+                <button class="key input">D</button>
+                <button class="key input">F</button>
+                <button class="key input">G</button>
+                <button class="key input">H</button>
+                <button class="key input">J</button>
+                <button class="key input">K</button>
+                <button class="key input">L</button>
+            </div>
+            <div class="row" id="row_3">
+                <button class="key" id="btnEnter">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                        <style>svg{fill:#57C5B6}</style>
+                        <path d="M128 40c0-22.1 17.9-40 40-40s40 17.9 40 40V188.2c8.5-7.6 19.7-12.2 32-12.2c20.6 0 38.2 13 45 31.2c8.8-9.3 21.2-15.2 35-15.2c25.3 0 46 19.5 47.9 44.3c8.5-7.7 19.8-12.3 32.1-12.3c26.5 0 48 21.5 48 48v48 16 48c0 70.7-57.3 128-128 128l-16 0H240l-.1 0h-5.2c-5 0-9.9-.3-14.7-1c-55.3-5.6-106.2-34-140-79L8 336c-13.3-17.7-9.7-42.7 8-56s42.7-9.7 56 8l56 74.7V40zM240 304c0-8.8-7.2-16-16-16s-16 7.2-16 16v96c0 8.8 7.2 16 16 16s16-7.2 16-16V304zm48-16c-8.8 0-16 7.2-16 16v96c0 8.8 7.2 16 16 16s16-7.2 16-16V304c0-8.8-7.2-16-16-16zm80 16c0-8.8-7.2-16-16-16s-16 7.2-16 16v96c0 8.8 7.2 16 16 16s16-7.2 16-16V304z"/>
+                    </svg>
+                </button>
+                <button class="key input">Z</button>
+                <button class="key input">X</button>
+                <button class="key input">C</button>
+                <button class="key input">V</button>
+                <button class="key input">B</button>
+                <button class="key input">N</button>
+                <button class="key input">M</button>
+                <button class="key"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                    <style>svg{fill:#57C5B6}</style>
+                    <path d="M290.7 57.4L57.4 290.7c-25 25-25 65.5 0 90.5l80 80c12 12 28.3 18.7 45.3 18.7H288h9.4H512c17.7 0 32-14.3 32-32s-14.3-32-32-32H387.9L518.6 285.3c25-25 25-65.5 0-90.5L381.3 57.4c-25-25-65.5-25-90.5 0zM297.4 416H288l-105.4 0-80-80L227.3 211.3 364.7 348.7 297.4 416z"/>
+                </svg>
+                </button>
+            </div>
+        </div>
     </section>
     <footer>
         &copy; 2023 MSM. All rights reserved.
