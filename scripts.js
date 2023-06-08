@@ -1,6 +1,6 @@
 let keys = document.getElementsByClassName("input");
 let guessLetters = [];
-let turn = 1;
+let turn = 0;
 
 let word = "";
 
@@ -9,23 +9,33 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(word);
 });
 
-handleInput = (letter) => {
+handleInput = () => {
     let inputBoxes = document.querySelectorAll('.active_row .letter');
-
-    for (let index = 0; index <= inputBoxes.length; index++) {
+    for (let index = 0; index != inputBoxes.length; index++) {
         if(guessLetters[index] != undefined){
             inputBoxes[index].value = guessLetters[index]; 
+        }else{
+            inputBoxes[index].value = "";
         }
           
     }
 }
 
+backspaceLetter = () => {
+    guessLetters.pop();
+    handleInput();
+}
+
 document.addEventListener('keydown', function(event) {
-    if (event.key.match(/[a-z]/i)) {
+    if (event.key.match(/^[a-z]$/i)) {
         if(guessLetters.length != 5){
             guessLetters.push(event.key.toUpperCase());
             handleInput();
         }
+    }else if(event.key.match("Enter")){
+        evaluateInputWord();
+    }else if(event.key.match("Backspace")){
+        backspaceLetter();
     }
 });
 
@@ -42,29 +52,32 @@ document.getElementById("btnEnter").addEventListener('click', function(){
     evaluateInputWord();
 })
 
+document.getElementById("btnBackspace").addEventListener('click', backspaceLetter);
 evaluateInputWord = () => {
     let inputBoxes = document.querySelectorAll('.active_row .letter');
     
     if(guessLetters.length != 5){
         alert("Not enough letters");
+        document.getElementById("errorModal").style.display = 'block';
     }else{
         if(guessLetters.join("") === word){
             alert("Welldone");
         }else if(!validWords.includes(guessLetters.join(""))){
             alert("Not a word in the list.");
-            guessLetters = [];
             inputBoxes.forEach(x => x.value = null);
         }else{
             evaluateLetter(inputBoxes);
             turn++;
             if(turn == 5){
                 alert("please try again later!");
+                let activeRow = document.querySelector('.active_row');
+                activeRow.classList.remove('active_row');
+            }else{
+                nextRow();
             }
-            nextRow();
-            guessLetters = [];
         }
     }
-    console.log(guessLetters); 
+    guessLetters = [];
 }
 
 evaluateLetter = (inputBoxes) => {
@@ -80,12 +93,7 @@ evaluateLetter = (inputBoxes) => {
 nextRow = () => {
     let activeRow = document.querySelector('.active_row');
     activeRow.classList.remove('active_row');
-
     let sibling = activeRow.nextElementSibling;
-    console.log(sibling);
     sibling.classList.add('active_row');
-    let inputBoxes = sibling.children;
-    console.log(inputBoxes);
-    inputBoxes.forEach(x => x.disabled = false);
-    activeRow.children.forEach(y => y.disabled = true);
 }
+
