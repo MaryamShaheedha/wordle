@@ -1,7 +1,6 @@
 let keys = document.getElementsByClassName("input");
-//let inputLetters = document.getElementsByClassName("letter");
-let inputLetters = [];
 let guessLetters = [];
+let turn = 1;
 
 let word = "";
 
@@ -10,12 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(word);
 });
 
-//todo: optimize the function to work with both keydown and button click
 handleInput = (letter) => {
     let inputBoxes = document.querySelectorAll('.active_row .letter');
-    if(guessLetters.length != 5){
-        guessLetters.push(letter.toUpperCase());
-    }
+
     for (let index = 0; index <= inputBoxes.length; index++) {
         if(guessLetters[index] != undefined){
             inputBoxes[index].value = guessLetters[index]; 
@@ -24,10 +20,21 @@ handleInput = (letter) => {
     }
 }
 
-//todo: a function to read keydown 
+document.addEventListener('keydown', function(event) {
+    if (event.key.match(/[a-z]/i)) {
+        if(guessLetters.length != 5){
+            guessLetters.push(event.key.toUpperCase());
+            handleInput();
+        }
+    }
+});
+
 for (var i = 0; i < keys.length; i++) {
     keys[i].addEventListener('click', function(){
-        handleInput(this.textContent);
+        if(guessLetters.length != 5){
+            guessLetters.push(this.textContent.toUpperCase());
+        }
+        handleInput();
     });
 }
 
@@ -37,25 +44,27 @@ document.getElementById("btnEnter").addEventListener('click', function(){
 
 evaluateInputWord = () => {
     let inputBoxes = document.querySelectorAll('.active_row .letter');
-
-    for (let index = 0; index <= inputBoxes.length; index++) {
-        if(inputBoxes[index] != undefined && inputBoxes[index].value != null){
-            inputLetters.push(inputBoxes[index].value.toUpperCase()); 
-        }  
-    }
-
-    if(inputLetters.length != 5){
+    
+    if(guessLetters.length != 5){
         alert("Not enough letters");
     }else{
-        if(inputLetters.join("") === word){
+        if(guessLetters.join("") === word){
             alert("Welldone");
-        }else if(!validWords.includes(inputLetters.join(""))){
+        }else if(!validWords.includes(guessLetters.join(""))){
             alert("Not a word in the list.");
+            guessLetters = [];
+            inputBoxes.forEach(x => x.value = null);
         }else{
             evaluateLetter(inputBoxes);
+            turn++;
+            if(turn == 5){
+                alert("please try again later!");
+            }
+            nextRow();
+            guessLetters = [];
         }
     }
-    console.log(inputLetters); 
+    console.log(guessLetters); 
 }
 
 evaluateLetter = (inputBoxes) => {
@@ -66,4 +75,17 @@ evaluateLetter = (inputBoxes) => {
             inputBoxes[i].classList.add("letterInWrongPosition");
         }
     }    
+}
+
+nextRow = () => {
+    let activeRow = document.querySelector('.active_row');
+    activeRow.classList.remove('active_row');
+
+    let sibling = activeRow.nextElementSibling;
+    console.log(sibling);
+    sibling.classList.add('active_row');
+    let inputBoxes = sibling.children;
+    console.log(inputBoxes);
+    inputBoxes.forEach(x => x.disabled = false);
+    activeRow.children.forEach(y => y.disabled = true);
 }

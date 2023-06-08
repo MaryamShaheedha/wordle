@@ -49,9 +49,9 @@ footer {
     justify-content: center;
     width: 100%;
 }
-/* .active_row .letter{
+.active_row .letter{
     background-color: #5B8FB9;
-} */
+}
 .letter {
     display: flex;
     justify-content: center;
