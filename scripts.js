@@ -57,19 +57,28 @@ evaluateInputWord = () => {
     let inputBoxes = document.querySelectorAll('.active_row .letter');
     
     if(guessLetters.length != 5){
-        alert("Not enough letters");
+        document.getElementById("error-title").innerText = "Not enough Letters!";
+        document.getElementById("error-message").innerText = "It should be a 5 letter word. Please try again."
         document.getElementById("errorModal").style.display = 'block';
+        setTimeout(function(){
+            document.getElementById("errorModal").style.display = 'none';
+        }, 3000);
     }else{
         if(guessLetters.join("") === word){
-            alert("Welldone");
+            document.getElementById("wonModal").style.display = 'block';
         }else if(!validWords.includes(guessLetters.join(""))){
-            alert("Not a word in the list.");
+            document.getElementById("error-title").innerText = "Not a word in the list!";
+            document.getElementById("error-message").innerText = "The word is not in the list. Please try again."
+            document.getElementById("errorModal").style.display = 'block';
+            setTimeout(function(){
+                document.getElementById("errorModal").style.display = 'none';
+            }, 3000);
             inputBoxes.forEach(x => x.value = null);
         }else{
             evaluateLetter(inputBoxes);
             turn++;
             if(turn == 5){
-                alert("please try again later!");
+                document.getElementById("lostModal").style.display = 'block';
                 let activeRow = document.querySelector('.active_row');
                 activeRow.classList.remove('active_row');
             }else{
