@@ -36,14 +36,14 @@ This is my version of the wordle game built using html, css and javascript
 ##
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| #092530  | ![#092530](https://via.placeholder.com/10/0a192f?text=+) |
-| #074537  | ![#074537](https://via.placeholder.com/10/0a192f?text=+) |
-| #eff5fd  | ![#eff5fd](https://via.placeholder.com/10/0a192f?text=+) |
-| #166648  | ![#166648](https://via.placeholder.com/10/0a192f?text=+) |
-| #fff3f2  | ![#fff3f2](https://via.placeholder.com/10/0a192f?text=+) |
-| #4E9F3D  | ![#4E9F3D](https://via.placeholder.com/10/0a192f?text=+) |
-| #e1934a  | ![#e1934a](https://via.placeholder.com/10/0a192f?text=+) |
-| #77100e  | ![#77100e](https://via.placeholder.com/10/0a192f?text=+) |
+| #092530  | ![#092530](https://via.placeholder.com/10/092530?text=+) |
+| #074537  | ![#074537](https://via.placeholder.com/10/074537?text=+) |
+| #eff5fd  | ![#eff5fd](https://via.placeholder.com/10/eff5fd?text=+) |
+| #166648  | ![#166648](https://via.placeholder.com/10/166648?text=+) |
+| #fff3f2  | ![#fff3f2](https://via.placeholder.com/10/fff3f2?text=+) |
+| #4E9F3D  | ![#4E9F3D](https://via.placeholder.com/10/4E9F3D?text=+) |
+| #e1934a  | ![#e1934a](https://via.placeholder.com/10/e1934a?text=+) |
+| #77100e  | ![#77100e](https://via.placeholder.com/10/77100e?text=+) |
 
 ## Installation
 2. Open [Wordle Game](https://maryamshaheedha.github.io/wordle/) in a web browser to play the game.
