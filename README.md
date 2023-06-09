@@ -32,6 +32,9 @@ This is my version of the wordle game built using html, css and javascript
 2. Designing the interface
   - Inside the `body`, added `header`, `section`, `modals` and a `footer`. 
 3. Defining the logic
+  - On keydown or letter click on the keyboard, the letter will be pushed to `guessLetter` array and `handleInput()` function will be triggered where the function will show the        letter on the input fields. 
+  - On press `Enter` or click on enter button, `evaluateInputWord()` will be triggered where the function will compare the guessed word with the target word.
+  
 4. Color Scheme Used
 ##
 | Color             | Hex                                                                |
@@ -49,7 +52,7 @@ This is my version of the wordle game built using html, css and javascript
 2. Open [Wordle Game](https://maryamshaheedha.github.io/wordle/) in a web browser to play the game.
 
 ## Unsolved Problems
-
+- Keeping a track of the users score is unsolved. And keeping a record or caching the users progress is yet to be solved.
 
 ## Contact
 
