@@ -33,6 +33,7 @@ This is my version of the wordle game built using html, css and javascript
   - Inside the `body`, added `header`, `section`, `modals` and a `footer`. 
 3. Defining the logic
 4. Color Scheme Used
+##
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
 | #092530  | ![#092530](https://via.placeholder.com/10/0a192f?text=+) |
