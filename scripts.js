@@ -5,10 +5,13 @@ let turn = 0;
 let word = "";
 
 document.addEventListener('DOMContentLoaded', function() {
-    word = validWords[Math.floor(Math.random() * validWords.length)]
-    console.log(word);
+    selectRandomWord();
 });
 
+selectRandomWord = () => {
+    word = validWords[Math.floor(Math.random() * validWords.length)]
+    console.log(word);
+}
 handleInput = () => {
     let inputBoxes = document.querySelectorAll('.active_row .letter');
     for (let index = 0; index != inputBoxes.length; index++) {
@@ -53,6 +56,7 @@ document.getElementById("btnEnter").addEventListener('click', function(){
 })
 
 document.getElementById("btnBackspace").addEventListener('click', backspaceLetter);
+
 evaluateInputWord = () => {
     let inputBoxes = document.querySelectorAll('.active_row .letter');
     
@@ -105,4 +109,27 @@ nextRow = () => {
     let sibling = activeRow.nextElementSibling;
     sibling.classList.add('active_row');
 }
+
+newRound = () => {
+    turn = 0;
+    guessLetters = [];
+    selectRandomWord();
+    let inputBoxes = document.querySelectorAll('.letter');
+    inputBoxes.forEach(x => {x.value = ""; x.classList.remove("letterInRightPosition"); x.classList.remove("letterInWrongPosition")});
+    let active_row = document.getElementsByClassName(".active_row");
+    if(active_row != undefined && active_row.length != 0 && active_row != null){
+        active_row.forEach(x => x.classList.remove("active_row"));
+    }
+    document.getElementById("row_1").classList.add("active_row");
+};
+
+document.getElementById("tryAgain").addEventListener('click', function(){
+    newRound();
+    document.getElementById("lostModal").style.display = "none";
+});
+
+document.getElementById("playAgain").addEventListener('click', function(){
+    newRound();
+    document.getElementById("wonModal").style.display = "none";
+});
 
