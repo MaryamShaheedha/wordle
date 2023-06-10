@@ -195,3 +195,36 @@ img {
     border: none;
     background: yellowgreen;
 }
+
+.stats{
+    background-color: #074537;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.stats h2{
+    color: #bb9e45;
+}
+.stat{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.stat p{
+    margin-left: 10px;
+    font-size: large;
+    font-weight: bold;
+    color: #f1e7c6;
+}
+.stat svg{
+    fill: #e4c158;
+}
+#turns{
+    color: #f1e7c6;
+}
+.stat p em{
+    color: #e4c158;
+}

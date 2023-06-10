@@ -1,8 +1,15 @@
 let keys = document.getElementsByClassName("input");
 let guessLetters = [];
 let turn = 0;
-
+let stats = {wins: 0, fails: 0}
 let word = "";
+
+//updates the stats div after each round
+updateStats = () => {
+    document.getElementById("turns").innerText = `${stats.wins + stats.fails}`;
+    document.getElementById("wonStat").innerText = stats.wins;
+    document.getElementById("failedStat").innerText = stats.fails;
+};
 
 document.addEventListener('DOMContentLoaded', function() {
     selectRandomWord();
@@ -72,10 +79,11 @@ evaluateInputWord = () => {
         document.getElementById("errorModal").style.display = 'block';
         setTimeout(function(){
             document.getElementById("errorModal").style.display = 'none';
-        }, 3000);
+        }, 1000);
     }else{
         //
         if(guessLetters.join("") === word){
+            stats.wins++;
             document.getElementById("wonModal").style.display = 'block';
         }else if(!validWords.includes(guessLetters.join(""))){
             document.getElementById("error-title").innerText = "Not a word in the list!";
@@ -83,12 +91,13 @@ evaluateInputWord = () => {
             document.getElementById("errorModal").style.display = 'block';
             setTimeout(function(){
                 document.getElementById("errorModal").style.display = 'none';
-            }, 3000);
+            }, 1000);
             inputBoxes.forEach(x => x.value = null);
         }else{
             evaluateLetter(inputBoxes);
             turn++;
             if(turn == 5){
+                stats.fails++;
                 document.getElementById("lostModal").style.display = 'block';
                 let activeRow = document.querySelector('.active_row');
                 activeRow.classList.remove('active_row');
@@ -98,6 +107,7 @@ evaluateInputWord = () => {
         }
     }
     guessLetters = [];
+    updateStats();
 }
 
 //a function to analyse letters individually
