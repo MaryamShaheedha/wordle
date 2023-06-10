@@ -54,6 +54,7 @@ This is my version of the wordle game built using html, css and javascript
 ## Unsolved Problems
 - Keeping a track of the users score is unsolved. And keeping a record or caching the users progress is yet to be solved.
 - I failed to make the view responsive.
+- The user can input a word he/her already input making it a loop, which need to be fixed.
 
 ## Contact
 
